@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+    backend:
+        container_name: express35
+        restart: always
+        build: .
+        networks:
+          - our-library-net
+        ports:
+            - 9035:8035
+        volumes:
+            - ./:/usr/src/app
+            - /usr/src/app/node_modules
+
+        command: npm run dev
+        stdin_open: true 
+        tty: true
+
+        environment:
+          - DB_USER=ChaanApp
+          - DB_PASSWORD=jesrobrub
+          - DB_HOST=chaanapp.8jzsi.mongodb.net
+          - DB_NAME=Chaan
+          - JWT_SECRET=supersecret
+
+networks:
+  our-library-net:
+    external: true
+    driver: bridge
