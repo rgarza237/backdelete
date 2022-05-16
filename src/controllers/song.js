@@ -1,5 +1,8 @@
 const AlbumSongs = require("../models/song")
 
+
+
+
 function getAllSongs(idAlbum) {
     return AlbumSongs.find({ album: { _id: idAlbum } }).populate("album", {
       albumName: 1,

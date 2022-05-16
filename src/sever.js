@@ -20,10 +20,12 @@ server.use(express.json());
 const userRouter = require("./routers/user");
 const albumRouter = require("./routers/album");
 const songRouter = require("./routers/song")
+const allSongsRouter = require("./routers/allSongs")
 //routers
 server.use("/user", userRouter);
 server.use("/album", albumRouter);
 server.use("/album/:idAlbum/song", songRouter)
+server.use("/songs", allSongsRouter)
 
 
 
