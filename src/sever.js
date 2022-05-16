@@ -1,16 +1,30 @@
 const express = require("express");
 const server = express();
 const cors = require("cors");
+const bodyParser = require("body-parser")
+server.use(bodyParser.json({
+    limit:'10mb'
+}));
+server.use(bodyParser.urlencoded({
+    limit: '50mb',
+    parameterLimit: 100000,
+    extended: true
+}));
 
 //middlewares
 server.use(cors());
 server.use(express.json());
 
+
 //reqiore router
-const organizersRouter = require("./routers/organizers");
-
-
+const userRouter = require("./routers/user");
+const albumRouter = require("./routers/album");
+const songRouter = require("./routers/song")
 //routers
-server.use("/organizer", organizersRouter);
+server.use("/user", userRouter);
+server.use("/album", albumRouter);
+server.use("/album/:idAlbum/song", songRouter)
+
+
 
 module.exports = server;
