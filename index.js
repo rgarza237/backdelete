@@ -8,8 +8,8 @@ const dbConnect = require("./src/lib/db");
 dbConnect()
   .then(() => {
     console.log("Database connected");
-    server.listen(8080, () => {
-      console.log("Server running on port 8080 <3");
+    server.listen(5535, () => {
+      console.log("Server running on port 5535 <3");
     });
   })
   .catch((error) => {
